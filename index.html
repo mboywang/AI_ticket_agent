@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="MSPbots AI-Driven Universal Technician — Eliminate 80% of L1 noise with instant 24/7 AI support integrated into your PSA." />
+  <title>MSPbots — AI Universal Technician Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <!-- ═══════════ TOP NAV ═══════════ -->
+  <nav id="topnav">
+    <div class="nav-brand">
+      <div class="logo-icon">
+        <svg viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="url(#g1)" stroke-width="2.5" />
+          <path d="M10 16h12M16 10v12" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" />
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#6C63FF" />
+              <stop offset="1" stop-color="#00D4FF" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span class="brand-text">MSP<span class="brand-accent">bots</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" data-page="dashboard" class="active">Dashboard</a></li>
+      <li><a href="#" data-page="onboarding">Onboarding</a></li>
+      <li><a href="#" data-page="tickets">Live Tickets</a></li>
+      <li><a href="#" data-page="aisop">AI SOP</a></li>
+      <li><a href="#" data-page="outcomes">Outcomes</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="status-pill"><span class="pulse"></span> All Systems Online</div>
+      <div class="avatar-circle" id="user-avatar">D</div>
+    </div>
+  </nav>
+
+  <!-- ═══════════ PAGE: DASHBOARD ═══════════ -->
+  <main id="page-dashboard" class="page active">
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-tag">AI-POWERED MSP AUTOMATION</p>
+        <h1>From Drowning in Tickets<br />to <span class="gradient-text">24/7 Autonomy</span></h1>
+        <p class="hero-sub">Deploy an AI-driven Universal Technician that integrates with your PSA. Eliminate 80% of L1
+          noise, provide instant 24/7 support, and let your engineers focus on high-value projects.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-goto="onboarding">Start Onboarding</button>
+          <button class="btn btn-ghost" id="btn-scroll-anna">Meet Anna AI</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="/hero-dashboard.png" alt="MSP Command Center" />
+        <div class="hero-glow"></div>
+      </div>
+    </section>
+
+    <!-- KPI Row -->
+    <section class="kpi-row" id="kpi-section">
+      <div class="kpi-card" data-animate>
+        <div class="kpi-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg></div>
+        <div class="kpi-value" data-count="847">0</div>
+        <div class="kpi-label">Tickets Auto-Resolved</div>
+        <div class="kpi-delta positive">↑ 23% this month</div>
+      </div>
+      <div class="kpi-card" data-animate>
+        <div class="kpi-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg></div>
+        <div class="kpi-value" data-count="12" data-suffix="s">0</div>
+        <div class="kpi-label">Avg Response Time</div>
+        <div class="kpi-delta positive">↓ from 47 min</div>
+      </div>
+      <div class="kpi-card" data-animate>
+        <div class="kpi-icon cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
+            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+            <line x1="9" y1="9" x2="9.01" y2="9" />
+            <line x1="15" y1="9" x2="15.01" y2="9" />
+          </svg></div>
+        <div class="kpi-value" data-count="98" data-suffix="%">0</div>
+        <div class="kpi-label">Client Satisfaction</div>
+        <div class="kpi-delta positive">↑ from 72%</div>
+      </div>
+      <div class="kpi-card" data-animate>
+        <div class="kpi-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23" />
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+          </svg></div>
+        <div class="kpi-value" data-prefix="$" data-count="142" data-suffix="K">0</div>
+        <div class="kpi-label">Annual Savings</div>
+        <div class="kpi-delta positive">↑ 40% margins</div>
+      </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="journey-section">
+      <h2 class="section-title">David's <span class="gradient-text">Transformation Journey</span></h2>
+      <p class="section-sub">From midnight firefighting to fully autonomous service desk</p>
+      <div class="timeline">
+        <div class="timeline-item" data-animate>
+          <div class="timeline-marker pain"></div>
+          <div class="timeline-card">
+            <span class="phase-tag pain">THE BEFORE</span>
+            <h3>🌙 The Midnight Call</h3>
+            <p>15 technicians. $60K/year each. 2 AM calls for printer issues costing $150 per incident. L1 team burned
+              out from password resets.</p>
+            <div class="metric-bar">
+              <div class="metric-fill" style="--w:15%;--c:var(--red)"></div><span>15% margins</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-marker decision"></div>
+          <div class="timeline-card">
+            <span class="phase-tag decision">THE DECISION</span>
+            <h3>🤖 Engaging MSPbots</h3>
+            <p>Native PSA integration. MFA user verification. SOP-aware triage. Not a chatbot — a Universal Technician
+              that speaks MSP.</p>
+            <div class="integration-pills">
+              <span class="pill">ConnectWise</span><span class="pill">Autotask</span><span class="pill">HaloPSA</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-marker active"></div>
+          <div class="timeline-card">
+            <span class="phase-tag active">PHASE 1 — DAY 1-30</span>
+            <h3>📞 Intake & Triage</h3>
+            <p>Anna answers instantly. Verifies identity, categorizes issues, logs perfect tickets. Dispatcher stops
+              answering phones.</p>
+            <div class="metric-bar">
+              <div class="metric-fill" style="--w:60%;--c:var(--blue)"></div><span>60% noise eliminated</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-marker active"></div>
+          <div class="timeline-card">
+            <span class="phase-tag active">PHASE 2 — MONTH 2-3</span>
+            <h3>🔧 Active Remediation</h3>
+            <p>M365 lockout? Anna verifies via SMS, resets password during the call. Ticket closed before a human sees
+              it.</p>
+            <div class="metric-bar">
+              <div class="metric-fill" style="--w:82%;--c:var(--purple)"></div><span>82% first-call resolution</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-marker success"></div>
+          <div class="timeline-card">
+            <span class="phase-tag success">PHASE 3 — 24/7 AUTONOMY</span>
+            <h3>🏆 The Command Center</h3>
+            <p>No night shift needed. Omni-channel coverage. Engineers focus on complex infrastructure. 10 new clients —
+              zero new hires.</p>
+            <div class="metric-bar">
+              <div class="metric-fill" style="--w:100%;--c:var(--green)"></div><span>40% margin increase</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ANNA AI SECTION (merged from standalone page) ── -->
+    <section class="anna-section" id="anna-section">
+      <h2 class="section-title">🤖 Meet <span class="gradient-text">Anna</span> — Your AI Technician</h2>
+      <p class="section-sub">Watch Anna handle a live call simulation</p>
+      <div class="anna-split">
+        <div class="anna-profile" data-animate>
+          <img src="/anna-avatar.png" alt="Anna AI Avatar" class="anna-avatar" />
+          <div class="anna-stats">
+            <div class="anna-stat"><span class="stat-val">24/7</span><span class="stat-lbl">Availability</span></div>
+            <div class="anna-stat"><span class="stat-val">12s</span><span class="stat-lbl">Avg Response</span></div>
+            <div class="anna-stat"><span class="stat-val">847</span><span class="stat-lbl">Resolved</span></div>
+          </div>
+          <div class="anna-channels">
+            <h4>Omni-Channel</h4>
+            <div class="channel-pills"><span class="ch-pill active">📞 Voice</span><span class="ch-pill">💬
+                Chat</span><span class="ch-pill">📱 SMS</span><span class="ch-pill">📧 Email</span></div>
+          </div>
+        </div>
+        <div class="chat-simulation" id="chat-sim">
+          <div class="chat-header"><span class="pulse green"></span> Live Call Simulation — Anna + Client</div>
+          <div class="chat-messages" id="chat-messages"></div>
+          <button class="btn btn-primary" id="btn-replay">▶ Replay Simulation</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ PAGE: ONBOARDING ═══════════ -->
+  <main id="page-onboarding" class="page">
+    <section class="page-header">
+      <h1>⚡ Onboarding — <span class="gradient-text">"Hire" Your AI</span></h1>
+      <p class="section-sub">Five simple steps. Less than 30 minutes. No coding required.</p>
+    </section>
+
+    <!-- Progress Bar -->
+    <div class="wizard-progress">
+      <div class="wiz-step active" data-wiz="1"><span class="wiz-num">1</span><span class="wiz-label">Select PSA</span>
+      </div>
+      <div class="wiz-connector"></div>
+      <div class="wiz-step" data-wiz="2"><span class="wiz-num">2</span><span class="wiz-label">API Keys</span></div>
+      <div class="wiz-connector"></div>
+      <div class="wiz-step" data-wiz="3"><span class="wiz-num">3</span><span class="wiz-label">Connect Docs</span></div>
+      <div class="wiz-connector"></div>
+      <div class="wiz-step" data-wiz="4"><span class="wiz-num">4</span><span class="wiz-label">Channels</span></div>
+      <div class="wiz-connector"></div>
+      <div class="wiz-step" data-wiz="5"><span class="wiz-num">5</span><span class="wiz-label">Voice</span></div>
+    </div>
+
+    <!-- ── STEP 1: SELECT PSA ── -->
+    <div class="wizard-panel active" id="wiz-panel-1" data-animate>
+      <div class="wiz-panel-header">
+        <h2>🔌 Select Your PSA Platform</h2>
+        <p class="section-sub">Which Professional Services Automation tool does your MSP use?</p>
+      </div>
+      <div class="psa-grid">
+        <div class="psa-card" data-psa="connectwise" id="psa-connectwise">
+          <div class="psa-logo-wrap">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="4" y="8" width="40" height="32" rx="4" stroke="currentColor" stroke-width="2.5" />
+              <path d="M14 24h20M24 16v16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              <circle cx="14" cy="16" r="2" fill="currentColor" />
+              <circle cx="34" cy="16" r="2" fill="currentColor" />
+            </svg>
+          </div>
+          <h3>ConnectWise Manage</h3>
+          <p>Full-featured PSA with robust API. Most popular choice for mid-market MSPs.</p>
+          <div class="psa-features">
+            <span>✓ REST API v4</span><span>✓ Ticket Sync</span><span>✓ Contact Import</span>
+          </div>
+        </div>
+        <div class="psa-card" data-psa="autotask" id="psa-autotask">
+          <div class="psa-logo-wrap">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M24 6L6 18v12l18 12 18-12V18L24 6z" stroke="currentColor" stroke-width="2.5"
+                stroke-linejoin="round" />
+              <path d="M24 18v12M18 24h12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Datto Autotask</h3>
+          <p>Unified platform with deep RMM integration. Ideal for Datto ecosystem users.</p>
+          <div class="psa-features">
+            <span>✓ SOAP/REST</span><span>✓ UDF Support</span><span>✓ Workflow Rules</span>
+          </div>
+        </div>
+        <div class="psa-card" data-psa="halopsa" id="psa-halopsa">
+          <div class="psa-logo-wrap">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2.5" />
+              <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2.5" />
+              <path d="M24 6v10M24 32v10M6 24h10M32 24h10" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>HaloPSA</h3>
+          <p>Modern, all-in-one ITSM platform. Growing fast with flexible API access.</p>
+          <div class="psa-features">
+            <span>✓ Modern API</span><span>✓ ITIL Aligned</span><span>✓ Custom Fields</span>
+          </div>
+        </div>
+      </div>
+      <div class="wiz-nav">
+        <div></div>
+        <button class="btn btn-primary" id="btn-wiz-1-next" disabled>Select a PSA to Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: API KEYS ── -->
+    <div class="wizard-panel" id="wiz-panel-2">
+      <div class="wiz-panel-header">
+        <h2>🔑 Connect <span class="gradient-text" id="selected-psa-name">Your PSA</span></h2>
+        <p class="section-sub">Are you an existing MSPbots client? We can pull your credentials automatically.</p>
+      </div>
+
+      <!-- Existing Client Toggle -->
+      <div class="client-toggle-section">
+        <div class="client-toggle-cards">
+          <div class="toggle-card" id="toggle-existing" data-client="existing">
+            <div class="toggle-icon">🔄</div>
+            <h4>I'm an existing MSPbots client</h4>
+            <p>We'll auto-pull your API keys from your MSPbots account. Just verify your identity.</p>
+          </div>
+          <div class="toggle-card" id="toggle-new" data-client="new">
+            <div class="toggle-icon">🆕</div>
+            <h4>I'm a new client</h4>
+            <p>Enter your PSA API keys manually. We'll walk you through each field.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Existing Client: Auto-Pull Flow -->
+      <div class="api-flow hidden" id="flow-existing">
+        <div class="auto-pull-card" data-animate>
+          <div class="auto-pull-header">
+            <div class="auto-pull-icon">🔐</div>
+            <div>
+              <h4>Verify Your MSPbots Account</h4>
+              <p>Enter your MSPbots registered email to retrieve your stored API credentials.</p>
+            </div>
+          </div>
+          <div class="mock-input-group">
+            <label>MSPbots Account Email</label>
+            <input type="email" class="real-input" id="mspbots-email" placeholder="david@davidsmsp.com" />
+            <button class="btn btn-primary btn-sm" id="btn-verify-account">🔍 Look Up Account</button>
+            <div class="connection-result" id="verify-result"></div>
+          </div>
+
+          <!-- Auto-pulled keys (hidden until verified) -->
+          <div class="auto-pulled-keys hidden" id="auto-pulled-keys">
+            <div class="pulled-header">
+              <span class="pulled-badge">✅ CREDENTIALS RETRIEVED</span>
+              <p>Your <span id="pulled-psa-type">ConnectWise</span> API keys have been loaded from your MSPbots profile.
+              </p>
+            </div>
+            <div class="pulled-fields">
+              <div class="pulled-field">
+                <label>API Base URL</label>
+                <div class="mock-input pulled"><span class="lock-icon">🔒</span> <span
+                    id="pull-url">https://api.connectwise.com/v4_6_release</span></div>
+              </div>
+              <div class="pulled-field">
+                <label>Company ID</label>
+                <div class="mock-input pulled"><span class="lock-icon">🔒</span> <span
+                    id="pull-company">davidsmsp_corp</span></div>
+              </div>
+              <div class="pulled-field">
+                <label>Public Key</label>
+                <div class="mock-input pulled password"><span class="lock-icon">🔒</span> ••••••••••••••••</div>
+              </div>
+              <div class="pulled-field">
+                <label>Private Key</label>
+                <div class="mock-input pulled password"><span class="lock-icon">🔒</span> ••••••••••••••••</div>
+              </div>
+            </div>
+            <div class="pulled-sync-status" id="sync-status">
+              <div class="sync-item synced"><span>📋</span> 142 companies loaded</div>
+              <div class="sync-item synced"><span>👥</span> 3,847 contacts synced</div>
+              <div class="sync-item synced"><span>🏢</span> 89 sites mapped</div>
+              <div class="sync-item synced"><span>📊</span> 12 service boards found</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Client: Manual Entry Flow -->
+      <div class="api-flow hidden" id="flow-new">
+        <div class="manual-entry-card" data-animate>
+          <div class="manual-entry-header">
+            <h4>📝 Enter Your <span id="manual-psa-type">ConnectWise</span> API Credentials</h4>
+            <p>You can find these in your PSA under <strong>System → Members → API Members</strong>.</p>
+          </div>
+          <!-- ConnectWise Fields -->
+          <div class="psa-fields" id="fields-connectwise">
+            <div class="mock-input-group">
+              <label>API Base URL</label>
+              <input type="text" class="real-input" placeholder="https://api.connectwise.com/v4_6_release" />
+              <label>Company ID</label>
+              <input type="text" class="real-input" placeholder="your_company_id" />
+              <label>Public Key</label>
+              <input type="text" class="real-input" placeholder="Your public API key" />
+              <label>Private Key</label>
+              <input type="password" class="real-input" placeholder="Your private API key" />
+            </div>
+          </div>
+          <!-- Autotask Fields -->
+          <div class="psa-fields hidden" id="fields-autotask">
+            <div class="mock-input-group">
+              <label>API Integration URL</label>
+              <input type="text" class="real-input" placeholder="https://webservices.autotask.net/ATServicesRest" />
+              <label>API User</label>
+              <input type="text" class="real-input" placeholder="api.user@yourdomain.com" />
+              <label>API Secret</label>
+              <input type="password" class="real-input" placeholder="Your Autotask API secret" />
+              <label>API Tracking Identifier</label>
+              <input type="text" class="real-input" placeholder="Your tracking ID from Autotask" />
+            </div>
+          </div>
+          <!-- HaloPSA Fields -->
+          <div class="psa-fields hidden" id="fields-halopsa">
+            <div class="mock-input-group">
+              <label>HaloPSA Instance URL</label>
+              <input type="text" class="real-input" placeholder="https://yourcompany.halopsa.com" />
+              <label>Client ID</label>
+              <input type="text" class="real-input" placeholder="Your HaloPSA client ID" />
+              <label>Client Secret</label>
+              <input type="password" class="real-input" placeholder="Your client secret" />
+              <label>Tenant</label>
+              <input type="text" class="real-input" placeholder="Your tenant name" />
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btn-test-manual">🔗 Test Connection</button>
+          <div class="connection-result" id="manual-connect-result"></div>
+        </div>
+      </div>
+
+      <div class="wiz-nav">
+        <button class="btn btn-ghost" id="btn-wiz-2-back">← Back</button>
+        <button class="btn btn-primary" id="btn-wiz-2-next" disabled>Continue to SOPs →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: CONNECT DOCUMENTATION ── -->
+    <div class="wizard-panel" id="wiz-panel-3">
+      <div class="wiz-panel-header">
+        <h2>📚 Connect Your <span class="gradient-text">Documentation</span></h2>
+        <p class="section-sub">Select your documentation platform to import SOPs and train the AI on your existing
+          procedures.</p>
+      </div>
+
+      <!-- Platform Cards -->
+      <div class="sop-source-cards" id="wiz-source-cards" style="max-width:640px; margin:0 auto;">
+        <div class="sop-source-card" data-source="itglue" id="wiz-source-itglue">
+          <div class="sop-source-card-icon"><span class="sop-source-logo">📘</span></div>
+          <h4>IT Glue</h4>
+          <p>Sync your flexible assets, SOPs, and runbooks from IT Glue.</p>
+          <div class="sop-source-features">
+            <span>✓ Flexible Assets</span><span>✓ SOPs &amp; Checklists</span><span>✓ Runbooks</span>
+          </div>
+        </div>
+        <div class="sop-source-card" data-source="hudu" id="wiz-source-hudu">
+          <div class="sop-source-card-icon"><span class="sop-source-logo">📗</span></div>
+          <h4>Hudu</h4>
+          <p>Import your articles, procedures, and knowledge base from Hudu.</p>
+          <div class="sop-source-features">
+            <span>✓ Knowledge Base</span><span>✓ Procedures</span><span>✓ Asset Layouts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Connection Panel -->
+      <div class="sop-api-panel hidden" id="wiz-api-panel" style="margin-top:24px;">
+        <div class="sop-api-header">
+          <h4 id="wiz-api-title">🔗 Connect to IT Glue</h4>
+          <button class="btn btn-ghost btn-xs" id="wiz-btn-api-back">← Change</button>
+        </div>
+        <div class="sop-api-pull">
+          <div class="sop-api-pull-icon">⚡</div>
+          <div class="sop-api-pull-info">
+            <h5>Auto-detect from MSPbots</h5>
+            <p>We'll check if your <span id="wiz-platform-name">IT Glue</span> API key is already stored in MSPbots.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="wiz-btn-api-pull">Check MSPbots</button>
+        </div>
+        <div class="sop-api-result hidden" id="wiz-api-result"></div>
+        <div class="sop-api-divider"><span>or enter manually</span></div>
+        <div class="sop-api-manual">
+          <label><span id="wiz-api-label">IT Glue</span> API Key</label>
+          <div class="sop-api-input-row">
+            <input type="password" class="real-input" id="wiz-api-key" placeholder="Paste your API key here…" />
+            <button class="btn btn-ghost btn-sm" id="wiz-btn-api-toggle" title="Show/Hide">👁️</button>
+          </div>
+          <label style="margin-top:12px;"><span id="wiz-subdomain-label">IT Glue</span> Subdomain</label>
+          <input type="text" class="real-input" id="wiz-api-subdomain" placeholder="e.g. yourcompany" />
+          <p class="sop-api-hint" id="wiz-api-hint">Find your API key in <strong>IT Glue</strong> → Admin → Settings →
+            API Keys</p>
+        </div>
+        <button class="btn btn-primary btn-lg sop-connect-btn" id="wiz-btn-api-connect" disabled>🔗 Connect &amp;
+          Verify</button>
+        <div class="sop-connect-progress hidden" id="wiz-connect-progress">
+          <div class="sop-progress-bar">
+            <div class="sop-progress-fill" id="wiz-progress-fill"></div>
+          </div>
+          <p class="sop-progress-text" id="wiz-progress-text">Connecting…</p>
+        </div>
+        <div class="sop-api-result hidden" id="wiz-connect-success" style="margin-top:16px;"></div>
+      </div>
+
+      <div class="wiz-nav">
+        <button class="btn btn-ghost" id="btn-wiz-3-back">← Back</button>
+        <button class="btn btn-primary" id="btn-wiz-3-next" disabled>Continue to Channels →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: OMNI-CHANNEL CONFIGURATION ── -->
+    <div class="wizard-panel" id="wiz-panel-4">
+      <div class="wiz-panel-header">
+        <h2>📡 Configure Your <span class="gradient-text">Channels</span></h2>
+        <p class="section-sub">Select which communication channels your AI agent will handle. You can enable or disable
+          any channel at any time after going live.</p>
+      </div>
+
+      <div class="channel-config-grid" id="channel-config-grid">
+
+        <!-- Phone -->
+        <div class="channel-config-card selected" data-channel="phone" id="ch-phone">
+          <div class="channel-card-toggle">
+            <div class="toggle-switch active">
+              <div class="toggle-knob"></div>
+            </div>
+          </div>
+          <div class="channel-card-icon">📞</div>
+          <h4>Phone</h4>
+          <p>Inbound & outbound voice calls. Anna answers, troubleshoots, and creates tickets — live on the phone.</p>
+          <div class="channel-card-tags">
+            <span class="ch-tag">Voice AI</span><span class="ch-tag">Call Routing</span><span
+              class="ch-tag">Voicemail</span>
+          </div>
+        </div>
+
+        <!-- SMS -->
+        <div class="channel-config-card selected" data-channel="sms" id="ch-sms">
+          <div class="channel-card-toggle">
+            <div class="toggle-switch active">
+              <div class="toggle-knob"></div>
+            </div>
+          </div>
+          <div class="channel-card-icon">💬</div>
+          <h4>SMS</h4>
+          <p>Two-way text messaging. Users can text their issue and receive real-time updates and resolutions.</p>
+          <div class="channel-card-tags">
+            <span class="ch-tag">Text Support</span><span class="ch-tag">Auto-Reply</span><span
+              class="ch-tag">MMS</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="channel-config-card" data-channel="whatsapp" id="ch-whatsapp">
+          <div class="channel-card-toggle">
+            <div class="toggle-switch">
+              <div class="toggle-knob"></div>
+            </div>
+          </div>
+          <div class="channel-card-icon">🟢</div>
+          <h4>WhatsApp</h4>
+          <p>Connect with clients on WhatsApp Business. Rich messaging with images, documents, and quick replies.</p>
+          <div class="channel-card-tags">
+            <span class="ch-tag">Rich Media</span><span class="ch-tag">Global Reach</span><span
+              class="ch-tag">Templates</span>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="channel-config-card selected" data-channel="email" id="ch-email">
+          <div class="channel-card-toggle">
+            <div class="toggle-switch active">
+              <div class="toggle-knob"></div>
+            </div>
+          </div>
+          <div class="channel-card-icon">📧</div>
+          <h4>Email</h4>
+          <p>AI-powered email triage. Automatically categorize, respond, and escalate incoming support emails.</p>
+          <div class="channel-card-tags">
+            <span class="ch-tag">Auto-Triage</span><span class="ch-tag">Smart Reply</span><span
+              class="ch-tag">Threading</span>
+          </div>
+        </div>
+
+        <!-- Microsoft Teams -->
+        <div class="channel-config-card" data-channel="teams" id="ch-teams">
+          <div class="channel-card-toggle">
+            <div class="toggle-switch">
+              <div class="toggle-knob"></div>
+            </div>
+          </div>
+          <div class="channel-card-icon">🟣</div>
+          <h4>Microsoft Teams</h4>
+          <p>Embed your AI agent as a Teams bot. Employees can report issues and get help without leaving Teams.</p>
+          <div class="channel-card-tags">
+            <span class="ch-tag">Bot Integration</span><span class="ch-tag">Adaptive Cards</span><span
+              class="ch-tag">SSO</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Channel summary -->
+      <div class="channel-summary" id="channel-summary">
+        <span class="summary-icon">✅</span>
+        <span id="channel-count">3</span> channels enabled — <span id="channel-list">Phone, SMS, Email</span>
+      </div>
+
+      <div class="wiz-nav">
+        <button class="btn btn-ghost" id="btn-wiz-4-back">← Back</button>
+        <button class="btn btn-primary" id="btn-wiz-4-next">Continue to Voice →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 5: VOICE & PERSONALITY ── -->
+    <div class="wizard-panel" id="wiz-panel-5">
+      <div class="wiz-panel-header">
+        <h2>🤖 Name & Personalize Your <span class="gradient-text">AI Agent</span></h2>
+        <p class="section-sub">Give your AI technician a name, personality, and a phone number. Make it yours.</p>
+      </div>
+      <div class="voice-content">
+
+        <!-- Agent Identity Section -->
+        <div class="agent-identity-section">
+          <h4>✨ Agent Identity</h4>
+          <p class="search-hint">Choose a name and personality for your AI. This is how it will introduce itself to
+            callers and ticket contacts.</p>
+          <div class="agent-name-row">
+            <div class="agent-field">
+              <label>Agent Name</label>
+              <input type="text" class="real-input" id="agent-name" placeholder="e.g. Anna, Sam, Alex…" value="Anna" />
+            </div>
+            <div class="agent-field">
+              <label>Personality Trait</label>
+              <div class="personality-chips" id="personality-chips">
+                <button class="personality-chip selected" data-personality="professional">🎯 Professional</button>
+                <button class="personality-chip" data-personality="friendly">😊 Friendly</button>
+                <button class="personality-chip" data-personality="empathetic">🤝 Empathetic</button>
+                <button class="personality-chip" data-personality="concise">⚡ Concise</button>
+                <button class="personality-chip" data-personality="technical">🔧 Technical</button>
+              </div>
+            </div>
+          </div>
+          <div class="agent-field" style="margin-top: 16px;">
+            <label>Personality Description <span style="color: var(--text-dim); font-weight: 400;">(optional — customize
+                how your agent communicates)</span></label>
+            <textarea class="real-input agent-personality-textarea" id="agent-personality" rows="3"
+              placeholder="e.g. Be warm and patient. Always greet by name. Explain technical steps in plain language. End calls with 'Is there anything else I can help with?'"></textarea>
+          </div>
+        </div>
+
+        <div class="step-divider"></div>
+
+        <!-- Voice Persona -->
+        <div class="voice-persona-inline">
+          <h4>🎙️ Voice</h4>
+          <p class="search-hint">Select a voice for phone and voice interactions.</p>
+          <div class="voice-select">
+            <div class="voice-opt selected"><span>🎙️</span> Female (Professional)</div>
+            <div class="voice-opt"><span>🎙️</span> Male (Casual)</div>
+            <div class="voice-opt"><span>🎙️</span> Custom Voice</div>
+          </div>
+        </div>
+
+        <div class="step-divider"></div>
+
+        <!-- Phone Number Search -->
+        <div class="phone-search-section">
+          <h4>📞 Provision a Phone Number</h4>
+          <p class="search-hint">Enter your preferred area code and we'll find available numbers in your region.</p>
+          <div class="area-code-row">
+            <div class="area-code-input-wrap">
+              <span class="area-prefix">+1</span>
+              <input type="text" class="real-input area-code-input" id="area-code" placeholder="555" maxlength="3" />
+            </div>
+            <button class="btn btn-primary" id="btn-search-numbers">🔍 Search Available Numbers</button>
+          </div>
+        </div>
+
+        <!-- Search Results (hidden until search) -->
+        <div class="phone-results hidden" id="phone-results">
+          <h4>📱 Available Numbers</h4>
+          <p class="search-hint">Select a number to assign to <strong id="phone-agent-name">Anna</strong>. All numbers
+            include voice, SMS, and MMS capabilities.</p>
+          <div class="phone-number-list" id="phone-number-list">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- Provision button (appears after number selection) -->
+        <div class="provision-action hidden" id="provision-action">
+          <button class="btn btn-primary btn-sm" id="btn-provision">📞 Provision Number</button>
+          <div class="provision-result" id="provision-result"></div>
+        </div>
+
+      </div>
+      <div class="wiz-nav">
+        <button class="btn btn-ghost" id="btn-wiz-5-back">← Back</button>
+        <button class="btn btn-primary btn-lg" id="btn-go-live" disabled>🚀 Go Live — Activate <span
+            id="golive-agent-name">Anna</span></button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══════════ PAGE: LIVE TICKETS ═══════════ -->
+  <main id="page-tickets" class="page">
+    <section class="page-header">
+      <h1>🎫 Live Ticket Board</h1>
+      <p class="section-sub">Real-time AI triage and resolution status</p>
+      <div class="ticket-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai-resolved">AI Resolved</button>
+        <button class="filter-btn" data-filter="escalated">Escalated</button>
+        <button class="filter-btn" data-filter="in-progress">In Progress</button>
+      </div>
+    </section>
+    <div class="ticket-board" id="ticket-board">
+      <!-- Tickets injected via JS -->
+    </div>
+  </main>
+
+
+
+  <!-- ═══════════ PAGE: AI SOP ═══════════ -->
+  <main id="page-aisop" class="page">
+    <section class="page-header">
+      <h1>📝 AI SOP <span class="gradient-text">Training Center</span></h1>
+      <p class="section-sub">Edit your skill files to teach the AI how to handle intake. Chat with your AI to refine the
+        process in real time.</p>
+    </section>
+
+    <div class="sop-studio" id="sop-studio">
+      <!-- LEFT: Skill File List -->
+      <div class="sop-files-panel">
+        <div class="sop-panel-header">
+          <h3>📂 Skill Files</h3>
+          <button class="btn btn-primary btn-sm" id="btn-add-skill">+ New Skill</button>
+        </div>
+        <div class="sop-file-list" id="sop-file-list">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Skill Editor (shown when a file is selected) -->
+        <div class="sop-editor-wrap hidden" id="sop-editor-wrap">
+          <div class="sop-editor-header">
+            <div class="sop-editor-title">
+              <span class="sop-file-icon">📄</span>
+              <span id="sop-editor-filename">skill.md</span>
+              <span class="sop-badge" id="sop-editor-badge">Active</span>
+            </div>
+            <div class="sop-editor-actions">
+              <button class="btn btn-ghost btn-xs" id="btn-sop-save">💾 Save</button>
+              <button class="btn btn-ghost btn-xs" id="btn-sop-close">✕</button>
+            </div>
+          </div>
+          <textarea class="sop-editor" id="sop-editor" spellcheck="false"></textarea>
+          <div class="sop-editor-footer">
+            <span class="sop-save-status" id="sop-save-status"></span>
+            <span class="sop-line-count" id="sop-line-count">0 lines</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: AI Chat -->
+      <div class="sop-chat-panel">
+        <div class="sop-panel-header">
+          <h3>💬 AI Intake Coach</h3>
+          <div class="sop-chat-status">
+            <span class="pulse"></span> Online
+          </div>
+        </div>
+        <div class="sop-chat-messages" id="sop-chat-messages">
+          <div class="sop-chat-msg ai">
+            <div class="sop-chat-avatar">🤖</div>
+            <div class="sop-chat-bubble">
+              <div class="sop-chat-name">AI Intake Coach</div>
+              <p>Hi! I'm your AI training assistant. You can ask me to create, modify, or improve your intake SOPs. Try
+                asking things like:</p>
+              <ul class="sop-chat-suggestions">
+                <li>"Add a step for verifying caller identity"</li>
+                <li>"Create a new SOP for handling DNS issues"</li>
+                <li>"Make the password reset process more secure"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="sop-chat-input-area">
+          <div class="sop-chat-input-wrap">
+            <textarea class="sop-chat-input" id="sop-chat-input" placeholder="Ask AI to modify your intake process…"
+              rows="1"></textarea>
+            <div class="sop-chat-btns">
+              <button class="sop-chat-voice-btn" id="sop-voice-btn" title="Voice input">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+              </button>
+              <button class="sop-chat-send-btn" id="sop-send-btn" title="Send message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══════════ PAGE: OUTCOMES ═══════════ -->
+  <main id="page-outcomes" class="page">
+    <section class="page-header">
+      <h1>📊 Outcomes & <span class="gradient-text">ROI</span></h1>
+      <p class="section-sub">The measurable transformation after deploying MSPbots</p>
+    </section>
+    <div class="outcomes-grid">
+      <div class="outcome-card" data-animate>
+        <div class="outcome-icon">💰</div>
+        <h3>Margins</h3>
+        <div class="outcome-big">+40%</div>
+        <p>Service margins increase as labor costs stabilize. No overtime. No night shift.</p>
+        <div class="before-after">
+          <div class="ba-item ba-before"><span>Before</span><strong>$900K labor</strong></div>
+          <div class="ba-item ba-after"><span>After</span><strong>$540K labor</strong></div>
+        </div>
+      </div>
+      <div class="outcome-card" data-animate>
+        <div class="outcome-icon">📈</div>
+        <h3>Scalability</h3>
+        <div class="outcome-big">+10 Clients</div>
+        <p>Added 10 new clients without hiring a single new L1 technician.</p>
+        <div class="before-after">
+          <div class="ba-item ba-before"><span>Before</span><strong>15 techs, 40 clients</strong></div>
+          <div class="ba-item ba-after"><span>After</span><strong>15 techs, 50 clients</strong></div>
+        </div>
+      </div>
+      <div class="outcome-card" data-animate>
+        <div class="outcome-icon">⭐</div>
+        <h3>Satisfaction</h3>
+        <div class="outcome-big">98% CSAT</div>
+        <p>Clients brag about instant support — even on Christmas Day.</p>
+        <div class="before-after">
+          <div class="ba-item ba-before"><span>Before</span><strong>72% CSAT</strong></div>
+          <div class="ba-item ba-after"><span>After</span><strong>98% CSAT</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="roi-calculator" data-animate>
+      <h2>🧮 Quick ROI Calculator</h2>
+      <div class="calc-grid">
+        <div class="calc-field"><label>Number of L1 Technicians</label><input type="range" id="calc-techs" min="1"
+            max="50" value="15" /><span class="calc-val" id="calc-techs-val">15</span></div>
+        <div class="calc-field"><label>Avg Salary per Tech ($K)</label><input type="range" id="calc-salary" min="30"
+            max="100" value="60" /><span class="calc-val" id="calc-salary-val">$60K</span></div>
+        <div class="calc-field"><label>Tickets per Month</label><input type="range" id="calc-tickets" min="100"
+            max="5000" value="1200" /><span class="calc-val" id="calc-tickets-val">1,200</span></div>
+      </div>
+      <div class="calc-result" id="calc-result">
+        <div class="calc-res-item"><span>Estimated Annual Savings</span><strong id="calc-savings">$360,000</strong>
+        </div>
+        <div class="calc-res-item"><span>Tickets Auto-Resolved / Month</span><strong id="calc-auto">960</strong></div>
+        <div class="calc-res-item"><span>FTEs Freed Up</span><strong id="calc-fte">12</strong></div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
