@@ -324,7 +324,7 @@ document.getElementById('btn-go-live')?.addEventListener('click', function () {
   const name = getAgentName();
   this.textContent = `🎉 ${name} is LIVE!`;
   this.style.background = 'linear-gradient(135deg, #10b981, #06b6d4)';
-  setTimeout(() => showPage('anna'), 1200);
+  setTimeout(() => showPage('aisop'), 1200);
 });
 
 /* ══════════ TICKET BOARD ══════════ */
