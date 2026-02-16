@@ -54,7 +54,7 @@ if (kpiSection) kpiObserver.observe(kpiSection);
 /* ══════════ ONBOARDING WIZARD ══════════ */
 let selectedPSA = null;
 let currentWizStep = 1;
-const totalWizSteps = 4;
+const totalWizSteps = 5;
 
 const psaNames = { connectwise: 'ConnectWise Manage', autotask: 'Datto Autotask', halopsa: 'HaloPSA' };
 const psaURLs = {
@@ -129,8 +129,6 @@ document.querySelectorAll('.toggle-card').forEach(card => {
     const type = card.dataset.client;
     document.getElementById('flow-existing').classList.toggle('hidden', type !== 'existing');
     document.getElementById('flow-new').classList.toggle('hidden', type !== 'new');
-    // Reset next button state
-    document.getElementById('btn-wiz-2-next').disabled = true;
   });
 });
 
@@ -151,7 +149,7 @@ document.getElementById('btn-verify-account')?.addEventListener('click', functio
     setTimeout(() => {
       document.getElementById('auto-pulled-keys').classList.remove('hidden');
       this.textContent = '✅ Account Verified';
-      document.getElementById('btn-wiz-2-next').disabled = false;
+
       // Animate sync items sequentially
       const items = document.querySelectorAll('.sync-item');
       items.forEach((item, i) => {
@@ -178,7 +176,7 @@ document.getElementById('btn-test-manual')?.addEventListener('click', function (
     result.textContent = '✅ Connected! 142 companies, 3,847 contacts synced.';
     result.className = 'connection-result success';
     this.textContent = '🔗 Connected';
-    document.getElementById('btn-wiz-2-next').disabled = false;
+
   }, 1800);
 });
 
@@ -318,7 +316,7 @@ document.getElementById('btn-provision')?.addEventListener('click', function () 
   setTimeout(() => {
     this.textContent = '✅ Number Provisioned';
     document.getElementById('provision-result').textContent = `✅ ${selectedPhoneNumber} is now active and assigned to ${name}.`;
-    document.getElementById('btn-go-live').disabled = false;
+
   }, 1500);
 });
 
@@ -566,8 +564,7 @@ document.getElementById('wiz-btn-api-connect')?.addEventListener('click', functi
           success.className = 'sop-api-result success';
           success.innerHTML = `✅ <strong>${platform.name} connected!</strong> 24 SOPs and 8 runbooks found. These will be imported when you go live.`;
 
-          // Enable the Continue button
-          document.getElementById('btn-wiz-3-next').disabled = false;
+
         }, 400);
       }
     }, 600 * (i + 1));
