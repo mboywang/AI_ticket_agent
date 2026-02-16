@@ -2433,12 +2433,163 @@ input[type="range"] {
 }
 
 /* ══════════ AI SOP STUDIO ══════════ */
+/* ══════════ AI SOP STUDIO ══════════ */
 .sop-studio {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  display: flex;
+  gap: 16px;
   margin-top: 32px;
-  min-height: 70vh;
+  height: 75vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Left Panel (Skill Files) --- */
+.sop-panel-left {
+  width: 300px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sop-panel-left.collapsed {
+  width: 0;
+  min-width: 0;
+  margin-left: -16px;
+  /* Hide the gap */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sop-files-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* --- Center Panel (Editor) --- */
+.sop-center-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* meaningful for text-overflow */
+  transition: all 0.3s ease;
+}
+
+.sop-editor-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  animation: panelIn 0.3s ease-out;
+}
+
+/* --- Right Panel (AI Coach) --- */
+.sop-panel-right {
+  width: 360px;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sop-panel-right.collapsed {
+  width: 0;
+  min-width: 0;
+  margin-right: -16px;
+  /* Hide the gap */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sop-chat-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* --- Collapsed Strips --- */
+.sop-collapsed-strip {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sop-collapsed-strip:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary-dark);
+}
+
+.sop-expand-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sop-expand-btn:hover {
+  color: var(--text-primary);
+}
+
+.sop-strip-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* --- Utilities --- */
+.sop-panel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sop-collapse-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.sop-collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
 }
 
 .sop-files-panel,
@@ -2472,8 +2623,28 @@ input[type="range"] {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  overflow-y: auto;
-  max-height: 320px;
+  overflow-y: scroll;
+  flex: 1;
+}
+
+/* Always-visible scrollbar styling */
+.sop-file-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sop-file-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.sop-file-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  min-height: 40px;
+}
+
+.sop-file-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .sop-file-item {
@@ -2483,8 +2654,13 @@ input[type="range"] {
   padding: 12px 16px;
   border-radius: var(--radius-xs);
   border: 1.5px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
   transition: all 0.25s;
+}
+
+.sop-file-item:last-child {
+  border-bottom: 1px solid transparent;
 }
 
 .sop-file-item:hover {
@@ -2548,11 +2724,13 @@ input[type="range"] {
 }
 
 /* -- Skill Editor -- */
-.sop-editor-wrap {
-  border-top: 1px solid var(--border);
+.sop-editor-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
-  flex: 1;
+  overflow: hidden;
   animation: panelIn 0.3s ease-out;
 }
 

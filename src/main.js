@@ -574,6 +574,64 @@ document.getElementById('wiz-btn-api-connect')?.addEventListener('click', functi
 /* ══════════ AI SOP TRAINING CENTER ══════════ */
 const sopSkillFiles = [
   {
+    id: 'call-greeting',
+    name: 'call_greeting.skill.md',
+    icon: '📞',
+    description: 'Greeting script & caller authentication flow',
+    status: 'active',
+    content: `---
+name: Call Greeting & Authentication
+description: Controls how Anna greets callers, verifies identity, and routes the call
+triggers:
+  - inbound call
+  - greeting
+  - hello
+  - who is this
+  - verify identity
+priority: highest
+---
+
+# Call Greeting & Authentication SOP
+
+## Step 1: Initial Greeting
+- Answer within 2 rings
+- Use the following script:
+  > "Thank you for calling [Company Name] IT support. This is Anna, your AI technician. How can I help you today?"
+- If after-hours (outside 8 AM–6 PM local):
+  > "Thank you for calling [Company Name] after-hours support. This is Anna. I'm here 24/7 to help."
+- Tone: Professional, warm, and confident
+
+## Step 2: Caller Identification
+- Ask: "Can I get your full name and the company you're calling from?"
+- Look up caller in PSA contact database by:
+  - [ ] Full name match
+  - [ ] Phone number (caller ID) match
+  - [ ] Email address match
+- If multiple matches found, ask for their email to disambiguate
+
+## Step 3: Identity Verification (Authentication)
+- **Standard verification** (for general inquiries):
+  - Confirm name + company is sufficient
+- **Hard verification** (for password resets, account changes, access requests):
+  - Ask for employee ID or last 4 of SSN
+  - OR send 6-digit MFA code to registered phone/email
+  - Allow up to 3 verification attempts
+  - After 3 failures → escalate to human technician
+
+## Step 4: Determine Intent & Route
+- Ask: "What can I help you with today?"
+- Match caller's description to skill file triggers
+- If matched → hand off to the appropriate skill SOP
+- If no match → create a new ticket and escalate:
+  > "I'm going to create a ticket for our team and have someone follow up. Can you describe the issue in a bit more detail?"
+
+## Step 5: Call Wrap-Up (if resolved during greeting)
+- "Is there anything else I can help you with?"
+- If no: "Thank you for calling. Have a great day!"
+- Log call duration, caller info, and outcome in PSA
+`
+  },
+  {
     id: 'password-reset',
     name: 'password_reset.skill.md',
     icon: '🔑',
@@ -832,6 +890,291 @@ triggers:
 - Remind about backup verification methods
 - Document in ticket and close
 `
+  },
+  {
+    id: 'call-escalation',
+    name: 'call_escalation.skill.md',
+    icon: '🚨',
+    description: 'Call escalation & handoff management',
+    status: 'active',
+    content: `---
+name: Call Escalation & Handoff
+description: Manages the escalation process when AI cannot resolve an issue
+triggers:
+  - escalate
+  - speak to a human
+  - talk to a person
+  - transfer call
+  - this is urgent
+  - critical issue
+  - emergency
+  - need a manager
+priority: high
+---
+
+# Call Escalation & Handoff SOP
+
+## Step 1: Determine Escalation Trigger
+Escalate when ANY of the following are true:
+- [ ] Caller explicitly requests a human technician
+- [ ] Issue requires admin-level access AI does not have
+- [ ] 3 failed resolution attempts on the same issue
+- [ ] Security incident or potential data breach
+- [ ] Hardware failure requiring onsite dispatch
+- [ ] Angry or distressed caller (sentiment detection)
+- [ ] Issue not matching any existing skill file
+
+## Step 2: Classify Severity
+| Level | Criteria | Response Time |
+|-------|----------|---------------|
+| P1 — Critical | Server down, data breach, all users affected | Immediate (< 5 min) |
+| P2 — High | Key service degraded, VIP user impacted | 15 minutes |
+| P3 — Medium | Single user impacted, workaround available | 1 hour |
+| P4 — Low | General question, feature request | 4 hours |
+
+## Step 3: Prepare Handoff Package
+Before transferring, compile:
+- Caller name, company, and contact info
+- Detailed summary of the issue
+- Steps already attempted by AI
+- Relevant ticket number (create one if none exists)
+- Severity classification and recommended team
+
+## Step 4: Route to Correct Team
+- **L2 Desktop Support** → Software, OS, and workstation issues
+- **Network Team** → Firewall, switch, routing, DNS
+- **Server / Cloud Team** → Azure, AWS, M365 admin, Exchange
+- **Security Team** → Phishing, malware, unauthorized access
+- **Onsite Dispatch** → Hardware failure, cabling, physical install
+- **Management** → Billing disputes, SLA complaints
+
+## Step 5: Execute Transfer
+- **Warm Handoff** (preferred):
+  > "I'm going to connect you with [Tech Name] from our [Team] team. I've briefed them on the issue so you won't have to repeat yourself."
+  - Stay on the line until the technician confirms they have context
+- **Cold Handoff** (if no one available):
+  > "I've created a priority ticket [TK-XXXX] and flagged it as [Priority Level]. A technician will call you back within [SLA time]. Is this phone number the best way to reach you?"
+
+## Step 6: Post-Escalation
+- Log escalation reason in ticket notes
+- Set ticket priority and SLA timer
+- Send email summary to assigned team
+- If P1/P2: trigger Slack/Teams alert to on-call team
+- Schedule follow-up check: was the caller contacted?
+`
+  },
+  {
+    id: 'shared-drive-permissions',
+    name: 'shared_drive_permissions.skill.md',
+    icon: '📁',
+    description: 'File access, drive mapping & permissions',
+    status: 'active',
+    content: `---
+name: Shared Drive & Permissions
+description: Resolve file access, drive mapping, and permission issues
+triggers:
+  - access denied
+  - can't access shared drive
+  - drive not mapped
+  - file permission
+  - SharePoint access
+  - OneDrive not syncing
+  - network drive
+---
+
+# Shared Drive & Permissions SOP
+
+## Step 1: Identify the Resource
+- Ask: "What file, folder, or drive are you trying to access?"
+- Determine type:
+  - [ ] On-prem file share (\\\\server\\share)
+  - [ ] SharePoint / OneDrive
+  - [ ] Mapped network drive
+  - [ ] NAS or other storage
+
+## Step 2: Verify Current Access
+- Check user's AD group memberships
+- Verify NTFS and share-level permissions
+- For SharePoint: check site permissions and sharing settings
+- Confirm the resource still exists and is online
+
+## Step 3: Common Fixes
+- **Drive not mapped:** Re-map via GPO or login script
+- **Access denied:** Add user to the correct AD security group
+- **SharePoint:** Grant access through site settings or sharing link
+- **OneDrive not syncing:** Reset sync client, re-sign in
+- **Credential popup:** Clear Windows Credential Manager entry
+
+## Step 4: Resolution & Documentation
+- Confirm user can now access the resource
+- If AD group change: allow 15 min for replication, advise sign-out/sign-in
+- Document the change in ticket for audit trail
+- If filesystem restructure needed: escalate to senior admin
+`
+  },
+  {
+    id: 'slow-pc-diagnostics',
+    name: 'slow_pc_diagnostics.skill.md',
+    icon: '🐌',
+    description: 'Slow computer triage & optimization',
+    status: 'active',
+    content: `---
+name: Slow PC Diagnostics
+description: Diagnose and resolve slow computer performance
+triggers:
+  - computer is slow
+  - pc running slow
+  - laptop freezing
+  - takes forever to load
+  - performance issues
+  - computer lagging
+---
+
+# Slow PC Diagnostics SOP
+
+## Step 1: Gather Context
+- How long has the issue been occurring?
+- Any recent changes? (updates, new software, hardware swap)
+- Is it slow on boot, during specific apps, or all the time?
+- Wired or wireless connection?
+
+## Step 2: Remote Quick Checks (via RMM)
+- [ ] CPU usage — sustained > 80%?
+- [ ] RAM usage — near capacity?
+- [ ] Disk space — < 10% free?
+- [ ] Disk health — SMART status warnings?
+- [ ] Startup programs — excessive count?
+- [ ] Pending Windows updates or reboot?
+
+## Step 3: Guided Resolution
+1. **High CPU:** Identify top process, restart offending app/service
+2. **Low RAM:** Close unnecessary apps, check for memory leaks
+3. **Low disk:** Run Disk Cleanup, move files to OneDrive, clear temp files
+4. **Too many startups:** Disable non-essential startup items
+5. **Needs reboot:** Schedule reboot if uptime > 7 days
+
+## Step 4: Advanced / Escalation
+- If malware suspected: run full AV scan, escalate to Security
+- If hardware failing (SMART alert): schedule hardware replacement
+- If persistent after all steps: escalate for reimage consideration
+- Document all findings and actions in ticket
+`
+  },
+  {
+    id: 'teams-troubleshoot',
+    name: 'teams_troubleshoot.skill.md',
+    icon: '💬',
+    description: 'Microsoft Teams calls, chat & meeting issues',
+    status: 'active',
+    content: `---
+name: Teams Troubleshooting
+description: Resolve Microsoft Teams issues including calls, meetings, and chat
+triggers:
+  - teams not working
+  - teams call dropping
+  - can't join meeting
+  - teams audio issue
+  - teams video not working
+  - screen sharing not working
+  - teams chat not loading
+---
+
+# Microsoft Teams Troubleshooting SOP
+
+## Step 1: Identify the Issue
+- [ ] Cannot sign in to Teams
+- [ ] Audio/microphone not working
+- [ ] Video/camera not working
+- [ ] Call quality issues (choppy, dropping)
+- [ ] Screen sharing not working
+- [ ] Chat messages not sending/loading
+- [ ] Cannot join meeting
+
+## Step 2: Basic Resolution
+- **Sign-in issues:** Clear Teams cache, sign out/in, check M365 license
+- **Audio:** Check default audio device in Settings > Devices, test call
+- **Video:** Verify camera permissions in OS settings, try in browser
+- **Call quality:** Switch to Ethernet, close bandwidth-heavy apps, check QoS
+- **Screen sharing:** Grant screen recording permission (macOS), update Teams
+
+## Step 3: Advanced Fixes
+- Reset Teams app: delete %AppData%\\Microsoft\\Teams cache
+- Reinstall Teams (New Teams vs Classic Teams)
+- Check Teams admin center for user policies
+- Verify meeting room / conference device firmware
+- Test in Teams Web App to isolate client issue
+
+## Step 4: Documentation
+- Note the Teams client version and OS
+- If call quality: capture network diagnostics
+- If recurring: escalate to M365 admin to review tenant health
+- Close ticket with resolution details
+`
+  },
+  {
+    id: 'security-incident',
+    name: 'security_incident.skill.md',
+    icon: '🔴',
+    description: 'Phishing, malware & security incident response',
+    status: 'active',
+    content: `---
+name: Security Incident Response
+description: First-response workflow for phishing, malware, and unauthorized access
+triggers:
+  - phishing email
+  - suspicious email
+  - virus detected
+  - malware
+  - hacked
+  - ransomware
+  - unauthorized access
+  - security breach
+  - compromised account
+priority: critical
+---
+
+# Security Incident Response SOP
+
+## Step 1: Triage & Classify
+| Type | Indicators |
+|------|-----------|
+| Phishing | Suspicious link clicked, credentials entered on fake site |
+| Malware | AV alert, unusual processes, ransomware note |
+| Account Compromise | Unrecognized sign-ins, MFA prompts not initiated by user |
+| Data Exfiltration | Large file transfers, unusual email forwarding rules |
+
+## Step 2: Immediate Containment
+- **Phishing / Compromised Account:**
+  - [ ] Force password reset immediately
+  - [ ] Revoke all active sessions (Azure AD)
+  - [ ] Review and remove suspicious mail rules
+  - [ ] Enable MFA if not already active
+- **Malware / Ransomware:**
+  - [ ] Isolate device from network (disable NIC via RMM)
+  - [ ] Do NOT power off (preserve forensic evidence)
+  - [ ] Block lateral movement — disable AD account if needed
+  - [ ] Alert Security Team immediately (P1 escalation)
+
+## Step 3: Investigation
+- Collect timeline from user: What did they click/download? When?
+- Pull sign-in logs from Azure AD / M365
+- Check email headers and URLs against threat intel
+- Scan endpoints with EDR tool for IOCs
+- Identify blast radius — are other users affected?
+
+## Step 4: Remediation
+- Remove malicious emails from all mailboxes (Content Search purge)
+- Clean or reimage infected endpoints
+- Restore from backup if data was encrypted/deleted
+- Update firewall and email filter rules to block threat
+
+## Step 5: Post-Incident
+- Document full incident timeline in ticket
+- Create incident report for management
+- If data breach: notify compliance team for reporting requirements
+- Schedule phishing awareness training for affected users
+- Update SOPs with lessons learned
+`
   }
 ];
 
@@ -867,14 +1210,19 @@ function openSopFile(fileId) {
   const editor = document.getElementById('sop-editor');
   const filename = document.getElementById('sop-editor-filename');
   const badge = document.getElementById('sop-editor-badge');
-  const lineCount = document.getElementById('sop-line-count');
+  const btns = document.querySelectorAll('.sop-editor-actions .btn');
   const saveStatus = document.getElementById('sop-save-status');
 
-  wrap.classList.remove('hidden');
+  // wrap.classList.remove('hidden'); // No longer needed, always visible
   editor.value = file.content;
   filename.textContent = file.name;
+
   badge.textContent = file.status;
   badge.className = `sop-badge ${file.status}`;
+  badge.classList.remove('hidden');
+
+  btns.forEach(b => b.classList.remove('hidden'));
+
   saveStatus.textContent = '';
   updateLineCount();
 }
@@ -904,9 +1252,21 @@ document.getElementById('btn-sop-save')?.addEventListener('click', function () {
 });
 
 document.getElementById('btn-sop-close')?.addEventListener('click', function () {
-  document.getElementById('sop-editor-wrap')?.classList.add('hidden');
+  // Reset to placeholder state
   currentSopFile = null;
   renderSopFileList();
+
+  const editor = document.getElementById('sop-editor');
+  const filename = document.getElementById('sop-editor-filename');
+  const badge = document.getElementById('sop-editor-badge');
+  const btns = document.querySelectorAll('.sop-editor-actions .btn');
+  const lineCount = document.getElementById('sop-line-count');
+
+  editor.value = '';
+  filename.textContent = 'Select a skill file to edit';
+  badge.classList.add('hidden');
+  btns.forEach(b => b.classList.add('hidden'));
+  lineCount.textContent = '0 lines';
 });
 
 // New Skill button
@@ -970,7 +1330,7 @@ function addSopChatMessage(role, html) {
   msg.innerHTML = `
     <div class="sop-chat-avatar">${role === 'ai' ? '🤖' : '👤'}</div>
     <div class="sop-chat-bubble">
-      <div class="sop-chat-name">${role === 'ai' ? 'AI Intake Coach' : 'You'}</div>
+      <div class="sop-chat-name">${role === 'ai' ? 'AI Skill Coach' : 'You'}</div>
       ${html}
     </div>
   `;
@@ -1090,6 +1450,38 @@ document.getElementById('sop-voice-btn')?.addEventListener('click', function () 
 
   sopRecognition.start();
 });
+
+/* ══════════ COLLAPSIBLE PANELS ══════════ */
+function setupCollapsiblePanel(panelId, btnCollapseId, btnExpandId, stripId, storageKey) {
+  const panel = document.getElementById(panelId);
+  const btnCollapse = document.getElementById(btnCollapseId);
+  const btnExpand = document.getElementById(btnExpandId);
+  const strip = document.getElementById(stripId);
+
+  if (!panel || !btnCollapse || !btnExpand || !strip) return;
+
+  function setCollapsed(isCollapsed) {
+    if (isCollapsed) {
+      panel.classList.add('collapsed');
+      strip.classList.remove('hidden');
+    } else {
+      panel.classList.remove('collapsed');
+      strip.classList.add('hidden');
+    }
+    // Save preference
+    // localStorage.setItem(storageKey, isCollapsed ? 'true' : 'false');
+  }
+
+  btnCollapse.addEventListener('click', () => setCollapsed(true));
+  btnExpand.addEventListener('click', () => setCollapsed(false));
+
+  // Restore preference (optional, currently disabled to ensure default state is expanded for demo)
+  // const saved = localStorage.getItem(storageKey);
+  // if (saved === 'true') setCollapsed(true);
+}
+
+setupCollapsiblePanel('sop-panel-left', 'btn-collapse-left', 'btn-expand-left', 'sop-strip-left', 'sop_left_collapsed');
+setupCollapsiblePanel('sop-panel-right', 'btn-collapse-right', 'btn-expand-right', 'sop-strip-right', 'sop_right_collapsed');
 
 /* ══════════ PROTOTYPE GROUP SIGNUP FORM ══════════ */
 

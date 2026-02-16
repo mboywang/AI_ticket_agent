@@ -709,30 +709,56 @@
     </section>
 
     <div class="sop-studio" id="sop-studio">
-      <!-- LEFT: Skill File List -->
-      <div class="sop-files-panel">
-        <div class="sop-panel-header">
-          <h3>📂 Skill Files</h3>
-          <button class="btn btn-primary btn-sm" id="btn-add-skill">+ New Skill</button>
+      <!-- LEFT: Skill File List (collapsible) -->
+      <div class="sop-panel-left" id="sop-panel-left">
+        <div class="sop-files-panel">
+          <div class="sop-panel-header">
+            <h3>📂 Skill Files</h3>
+            <div class="sop-panel-header-actions">
+              <button class="btn btn-primary btn-sm" id="btn-add-skill">+ New Skill</button>
+              <button class="sop-collapse-btn" id="btn-collapse-left" title="Collapse skill list">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="11 17 6 12 11 7" />
+                  <polyline points="18 17 13 12 18 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="sop-file-list" id="sop-file-list">
+            <!-- Populated by JS -->
+          </div>
         </div>
-        <div class="sop-file-list" id="sop-file-list">
-          <!-- Populated by JS -->
-        </div>
+      </div>
+      <!-- Left collapsed strip -->
+      <div class="sop-collapsed-strip sop-collapsed-strip-left hidden" id="sop-strip-left">
+        <button class="sop-expand-btn" id="btn-expand-left" title="Expand skill list">
+          <span class="sop-strip-icon">📂</span>
+          <span class="sop-strip-label">Skill Files</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7" />
+            <polyline points="6 17 11 12 6 7" />
+          </svg>
+        </button>
+      </div>
 
-        <!-- Skill Editor (shown when a file is selected) -->
-        <div class="sop-editor-wrap hidden" id="sop-editor-wrap">
+      <!-- CENTER: Skill Editor (always visible) -->
+      <div class="sop-center-panel">
+        <div class="sop-editor-panel" id="sop-editor-wrap">
           <div class="sop-editor-header">
             <div class="sop-editor-title">
               <span class="sop-file-icon">📄</span>
-              <span id="sop-editor-filename">skill.md</span>
-              <span class="sop-badge" id="sop-editor-badge">Active</span>
+              <span id="sop-editor-filename">Select a skill file to edit</span>
+              <span class="sop-badge hidden" id="sop-editor-badge">Active</span>
             </div>
             <div class="sop-editor-actions">
-              <button class="btn btn-ghost btn-xs" id="btn-sop-save">💾 Save</button>
-              <button class="btn btn-ghost btn-xs" id="btn-sop-close">✕</button>
+              <button class="btn btn-ghost btn-xs hidden" id="btn-sop-save">💾 Save</button>
+              <button class="btn btn-ghost btn-xs hidden" id="btn-sop-close">✕</button>
             </div>
           </div>
-          <textarea class="sop-editor" id="sop-editor" spellcheck="false"></textarea>
+          <textarea class="sop-editor" id="sop-editor" spellcheck="false"
+            placeholder="← Select a skill file from the list to begin editing…"></textarea>
           <div class="sop-editor-footer">
             <span class="sop-save-status" id="sop-save-status"></span>
             <span class="sop-line-count" id="sop-line-count">0 lines</span>
@@ -740,53 +766,77 @@
         </div>
       </div>
 
-      <!-- RIGHT: AI Chat -->
-      <div class="sop-chat-panel">
-        <div class="sop-panel-header">
-          <h3>💬 AI Intake Coach</h3>
-          <div class="sop-chat-status">
-            <span class="pulse"></span> Online
-          </div>
-        </div>
-        <div class="sop-chat-messages" id="sop-chat-messages">
-          <div class="sop-chat-msg ai">
-            <div class="sop-chat-avatar">🤖</div>
-            <div class="sop-chat-bubble">
-              <div class="sop-chat-name">AI Intake Coach</div>
-              <p>Hi! I'm your AI training assistant. You can ask me to create, modify, or improve your intake SOPs. Try
-                asking things like:</p>
-              <ul class="sop-chat-suggestions">
-                <li>"Add a step for verifying caller identity"</li>
-                <li>"Create a new SOP for handling DNS issues"</li>
-                <li>"Make the password reset process more secure"</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="sop-chat-input-area">
-          <div class="sop-chat-input-wrap">
-            <textarea class="sop-chat-input" id="sop-chat-input" placeholder="Ask AI to modify your intake process…"
-              rows="1"></textarea>
-            <div class="sop-chat-btns">
-              <button class="sop-chat-voice-btn" id="sop-voice-btn" title="Voice input">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      <!-- RIGHT: AI Coach (collapsible) -->
+      <div class="sop-panel-right" id="sop-panel-right">
+        <div class="sop-chat-panel">
+          <div class="sop-panel-header">
+            <h3>💬 AI Skill Coach</h3>
+            <div class="sop-panel-header-actions">
+              <div class="sop-chat-status">
+                <span class="pulse"></span> Online
+              </div>
+              <button class="sop-collapse-btn" id="btn-collapse-right" title="Collapse AI coach">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                  <line x1="12" y1="19" x2="12" y2="23" />
-                  <line x1="8" y1="23" x2="16" y2="23" />
-                </svg>
-              </button>
-              <button class="sop-chat-send-btn" id="sop-send-btn" title="Send message">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  <polyline points="13 17 18 12 13 7" />
+                  <polyline points="6 17 11 12 6 7" />
                 </svg>
               </button>
             </div>
           </div>
+          <div class="sop-chat-messages" id="sop-chat-messages">
+            <div class="sop-chat-msg ai">
+              <div class="sop-chat-avatar">🤖</div>
+              <div class="sop-chat-bubble">
+                <div class="sop-chat-name">AI Skill Coach</div>
+                <p>Hi! I'm your AI training assistant. You can ask me to create, modify, or improve your intake SOPs.
+                  Try
+                  asking things like:</p>
+                <ul class="sop-chat-suggestions">
+                  <li>"Add a step for verifying caller identity"</li>
+                  <li>"Create a new SOP for handling DNS issues"</li>
+                  <li>"Make the password reset process more secure"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="sop-chat-input-area">
+            <div class="sop-chat-input-wrap">
+              <textarea class="sop-chat-input" id="sop-chat-input" placeholder="Ask AI to modify your intake process…"
+                rows="1"></textarea>
+              <div class="sop-chat-btns">
+                <button class="sop-chat-voice-btn" id="sop-voice-btn" title="Voice input">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    <line x1="12" y1="19" x2="12" y2="23" />
+                    <line x1="8" y1="23" x2="16" y2="23" />
+                  </svg>
+                </button>
+                <button class="sop-chat-send-btn" id="sop-send-btn" title="Send message">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <!-- Right collapsed strip -->
+      <div class="sop-collapsed-strip sop-collapsed-strip-right hidden" id="sop-strip-right">
+        <button class="sop-expand-btn" id="btn-expand-right" title="Expand AI coach">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="11 17 6 12 11 7" />
+            <polyline points="18 17 13 12 18 7" />
+          </svg>
+          <span class="sop-strip-icon">💬</span>
+          <span class="sop-strip-label">AI Coach</span>
+        </button>
       </div>
     </div>
   </main>
