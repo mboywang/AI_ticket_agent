@@ -1094,5 +1094,118 @@ document.getElementById('sop-voice-btn')?.addEventListener('click', function () 
   sopRecognition.start();
 });
 
+/* ══════════ PROTOTYPE GROUP SIGNUP FORM ══════════ */
+
+// VIP Detection: show badge when "Paid Answering Service" is selected
+document.getElementById('signup-afterhours')?.addEventListener('change', function () {
+  const vip = document.getElementById('vip-badge');
+  if (this.value === 'outsourced') {
+    vip.classList.remove('hidden');
+  } else {
+    vip.classList.add('hidden');
+  }
+});
+
+// Form submission
+document.getElementById('beta-signup-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const fname = document.getElementById('signup-fname').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const phone = document.getElementById('signup-phone').value.trim();
+  const afterhours = document.getElementById('signup-afterhours').value;
+  const isVip = afterhours === 'outsourced';
+
+  // Disable submit
+  const btn = document.getElementById('btn-signup-submit');
+  btn.textContent = '⏳ Submitting…';
+  btn.disabled = true;
+
+  // Show Magic Moment call overlay
+  const overlay = document.getElementById('magic-overlay');
+  const fill = document.getElementById('magic-progress-fill');
+  const status = document.getElementById('magic-status');
+  document.getElementById('magic-phone-display').textContent = '+1 ' + phone;
+
+  overlay.classList.remove('hidden');
+
+  // Simulate call progress
+  setTimeout(() => { fill.style.width = '25%'; status.textContent = 'Ringing…'; }, 800);
+  setTimeout(() => { fill.style.width = '55%'; status.textContent = `Hi ${fname}, this is Anna! 🤖`; }, 2400);
+  setTimeout(() => { fill.style.width = '85%'; status.textContent = 'Sending confirmation email…'; }, 4000);
+  setTimeout(() => {
+    fill.style.width = '100%';
+    status.textContent = '✅ Call complete. Welcome to the prototype group!';
+  }, 5200);
+
+  // Transition to success state
+  setTimeout(() => {
+    overlay.classList.add('hidden');
+    fill.style.width = '0%';
+
+    // Hide form, show success
+    document.getElementById('signup-form-card').classList.add('hidden');
+    document.querySelector('.signup-hero').style.display = 'none';
+
+    const success = document.getElementById('signup-success');
+    success.classList.remove('hidden');
+    document.getElementById('success-email').textContent = email;
+
+    if (isVip) {
+      document.getElementById('success-vip').classList.remove('hidden');
+    }
+
+    // Reset button
+    btn.textContent = '🚀 Join the Prototype Group';
+    btn.disabled = false;
+
+    // Scroll to top
+    document.getElementById('page-signup').scrollIntoView({ behavior: 'smooth' });
+  }, 6500);
+});
+
+// SOP Upload Zone Handlers
+function setupUploadZone(zoneId, fileInputId, nameDisplayId) {
+  const zone = document.getElementById(zoneId);
+  const input = document.getElementById(fileInputId);
+  const nameDisplay = document.getElementById(nameDisplayId);
+  if (!zone || !input) return;
+
+  zone.addEventListener('click', () => input.click());
+
+  zone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    zone.classList.add('drag-over');
+  });
+
+  zone.addEventListener('dragleave', () => {
+    zone.classList.remove('drag-over');
+  });
+
+  zone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    if (e.dataTransfer.files.length) {
+      input.files = e.dataTransfer.files;
+      showFileName(e.dataTransfer.files[0], zone, nameDisplay);
+    }
+  });
+
+  input.addEventListener('change', () => {
+    if (input.files.length) {
+      showFileName(input.files[0], zone, nameDisplay);
+    }
+  });
+
+  function showFileName(file, zoneEl, displayEl) {
+    displayEl.textContent = '✅ ' + file.name;
+    displayEl.classList.remove('hidden');
+    zoneEl.classList.add('has-file');
+  }
+}
+
+setupUploadZone('sop-bh-zone', 'sop-bh-file', 'sop-bh-name');
+setupUploadZone('sop-ah-zone', 'sop-ah-file', 'sop-ah-name');
+
 /* ══════════ INITIAL LOAD ══════════ */
 setTimeout(triggerAnimations, 200);

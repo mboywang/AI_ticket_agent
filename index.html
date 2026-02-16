@@ -39,6 +39,7 @@
       <li><a href="#" data-page="tickets">Live Tickets</a></li>
       <li><a href="#" data-page="aisop">AI SOP</a></li>
       <li><a href="#" data-page="outcomes">Outcomes</a></li>
+      <li><a href="#" data-page="signup" class="nav-cta-link">Prototype Group</a></li>
     </ul>
     <div class="nav-right">
       <div class="status-pill"><span class="pulse"></span> All Systems Online</div>
@@ -845,6 +846,214 @@
         <div class="calc-res-item"><span>FTEs Freed Up</span><strong id="calc-fte">12</strong></div>
       </div>
     </div>
+  </main>
+
+  <!-- ═══════════ PAGE: PROTOTYPE GROUP SIGNUP ═══════════ -->
+  <main id="page-signup" class="page">
+
+    <!-- Hero Section -->
+    <section class="signup-hero">
+      <div class="signup-hero-badge">🚀 LIMITED PROTOTYPE GROUP — 10 SPOTS</div>
+      <h1 class="signup-hero-headline">Stop Paying per Minute for<br><span class="gradient-text">'Just Taking a
+          Message.'</span></h1>
+      <p class="signup-hero-sub">Meet <strong>Anna</strong>—the AI Technician that answers calls, troubleshoots
+        Level&nbsp;1 issues, and logs tickets directly into your PSA. <strong>24/7. Instant Scaling.</strong></p>
+      <div class="signup-value-props">
+        <div class="signup-vp"><span class="vp-icon">✅</span><span>No hold times — ever.</span></div>
+        <div class="signup-vp"><span class="vp-icon">✅</span><span>Verification &amp; Auth included.</span></div>
+      </div>
+    </section>
+
+    <!-- Signup Form -->
+    <section class="signup-form-section">
+      <div class="signup-form-card" id="signup-form-card">
+        <div class="form-header">
+          <h2>🎯 Join the Prototype Group</h2>
+          <p>Fill in the details below. If you currently use a paid answering service, you qualify for <strong
+              class="gradient-text">Priority Onboarding</strong>.</p>
+        </div>
+
+        <form id="beta-signup-form" autocomplete="off">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="signup-fname">First Name <span class="req">*</span></label>
+              <input type="text" id="signup-fname" class="signup-input" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-lname">Last Name <span class="req">*</span></label>
+              <input type="text" id="signup-lname" class="signup-input" placeholder="Doe" required />
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="signup-email">Work Email <span class="req">*</span></label>
+              <input type="email" id="signup-email" class="signup-input" placeholder="john@yourmsp.com" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-phone">Mobile Number <span class="req">*</span></label>
+              <div class="phone-input-wrap">
+                <span class="phone-prefix">+1</span>
+                <input type="tel" id="signup-phone" class="signup-input phone-field" placeholder="(555) 123-4567"
+                  required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="signup-psa">Which PSA do you use? <span class="req">*</span></label>
+              <select id="signup-psa" class="signup-select" required>
+                <option value="" disabled selected>Select your PSA…</option>
+                <option value="connectwise">ConnectWise</option>
+                <option value="autotask">Autotask</option>
+                <option value="halopsa">HaloPSA</option>
+                <option value="kaseya">Kaseya</option>
+                <option value="syncro">Syncro</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="signup-afterhours">How do you handle After-Hours? <span class="req">*</span></label>
+              <select id="signup-afterhours" class="signup-select" required>
+                <option value="" disabled selected>Select one…</option>
+                <option value="oncall">Technician On-Call (Rotational)</option>
+                <option value="outsourced">Paid Answering Service (Outsourced)</option>
+                <option value="voicemail">Voicemail Only</option>
+                <option value="none">No After-Hours Support</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signup-volume">Approx. Monthly Call Volume <span class="req">*</span></label>
+            <select id="signup-volume" class="signup-select" required>
+              <option value="" disabled selected>Select range…</option>
+              <option value="<50">&lt; 50 calls</option>
+              <option value="50-200">50 – 200 calls</option>
+              <option value="200-500">200 – 500 calls</option>
+              <option value="500+">500+ calls</option>
+            </select>
+          </div>
+
+          <!-- VIP Badge (appears when Paid Answering Service is selected) -->
+          <div class="vip-badge hidden" id="vip-badge">
+            <span class="vip-icon">⭐</span>
+            <div>
+              <strong>VIP Lead Detected!</strong>
+              <p>You currently use a paid answering service. You qualify for <strong>Priority Onboarding</strong> —
+                we'll reach out within 24 hours.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>What is your biggest pain point? <span class="req">*</span></label>
+            <div class="pain-point-radios">
+              <label class="radio-card">
+                <input type="radio" name="painpoint" value="cost" required />
+                <span class="radio-card-body"><span class="radio-icon">💰</span><span>Cost of outsourcing</span></span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="painpoint" value="quality" />
+                <span class="radio-card-body"><span class="radio-icon">📝</span><span>Quality of ticket
+                    notes</span></span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="painpoint" value="speed" />
+                <span class="radio-card-body"><span class="radio-icon">⚡</span><span>Speed of response</span></span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="painpoint" value="burnout" />
+                <span class="radio-card-body"><span class="radio-icon">🔥</span><span>Tech burnout</span></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- SOP Upload Section -->
+          <div class="form-group sop-upload-section">
+            <label>Do you have Phone Call Intake SOPs? <span class="optional-tag">(optional)</span></label>
+            <p class="field-hint">If you have existing business hours or after-hours phone call intake SOPs, upload them
+              here. This helps Anna learn your exact workflow from day one.</p>
+            <div class="sop-upload-grid">
+              <div class="sop-upload-card">
+                <div class="sop-upload-zone" id="sop-bh-zone">
+                  <input type="file" id="sop-bh-file" accept=".pdf,.doc,.docx,.txt,.xlsx" hidden />
+                  <span class="upload-icon">🏢</span>
+                  <strong>Business Hours SOP</strong>
+                  <span class="upload-cta">Click to upload or drag & drop</span>
+                  <span class="upload-formats">PDF, DOC, DOCX, TXT, XLSX</span>
+                </div>
+                <div class="sop-file-name hidden" id="sop-bh-name"></div>
+              </div>
+              <div class="sop-upload-card">
+                <div class="sop-upload-zone" id="sop-ah-zone">
+                  <input type="file" id="sop-ah-file" accept=".pdf,.doc,.docx,.txt,.xlsx" hidden />
+                  <span class="upload-icon">🌙</span>
+                  <strong>After-Hours SOP</strong>
+                  <span class="upload-cta">Click to upload or drag & drop</span>
+                  <span class="upload-formats">PDF, DOC, DOCX, TXT, XLSX</span>
+                </div>
+                <div class="sop-file-name hidden" id="sop-ah-name"></div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg signup-submit" id="btn-signup-submit">
+            🚀 Join the Prototype Group
+          </button>
+          <p class="form-disclaimer">No credit card required. We'll never share your data.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Magic Moment: Simulated Call -->
+    <div class="magic-moment-overlay hidden" id="magic-overlay">
+      <div class="magic-moment-card">
+        <div class="magic-ring-animation">
+          <div class="ring-pulse"></div>
+          <div class="ring-pulse delay"></div>
+          <div class="ring-avatar">🤖</div>
+        </div>
+        <h2>Anna is calling you…</h2>
+        <p class="magic-phone-number" id="magic-phone-display">+1 (555) 123-4567</p>
+        <p class="magic-sub">Check your phone! This is a preview of what your clients will experience.</p>
+        <div class="magic-progress">
+          <div class="magic-progress-fill" id="magic-progress-fill"></div>
+        </div>
+        <p class="magic-status" id="magic-status">Connecting…</p>
+      </div>
+    </div>
+
+    <!-- Success State -->
+    <section class="signup-success hidden" id="signup-success">
+      <div class="success-card">
+        <div class="success-icon-wrap">
+          <div class="success-check">✅</div>
+        </div>
+        <h2>You're on the list!</h2>
+        <p class="success-sub" id="success-sub">We'll reach out soon to get you started with Anna.</p>
+        <div class="success-vip hidden" id="success-vip">
+          <span class="vip-icon">⭐</span>
+          <div>
+            <strong>Priority Onboarding Activated</strong>
+            <p>You selected 'Paid Answering Service' — you qualify for priority access. We will reach out within
+              <strong>24 hours</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="success-next-steps">
+          <h4>What happens next?</h4>
+          <div class="next-step"><span class="step-num">1</span><span>Confirmation email sent to <strong
+                id="success-email">your inbox</strong></span></div>
+          <div class="next-step"><span class="step-num">2</span><span>Our team reviews your application</span></div>
+          <div class="next-step"><span class="step-num">3</span><span>We schedule a 15-min onboarding call</span></div>
+        </div>
+        <button class="btn btn-ghost"
+          onclick="document.getElementById('signup-success').classList.add('hidden'); document.getElementById('signup-form-card').classList.remove('hidden'); document.getElementById('beta-signup-form').reset();">←
+          Back to Form</button>
+      </div>
+    </section>
+
   </main>
 
   <script type="module" src="/src/main.js"></script>
